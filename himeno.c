@@ -68,7 +68,7 @@ static int ndx,ndy,ndz;
 static int imax,jmax,kmax;
 
 #pragma xmp template t(0:MKMAX-1, 0:MJMAX-1, 0:MIMAX-1)
-#pragma xmp nodes n(NDY, NDX)
+#pragma xmp nodes n(*, *)
 #pragma xmp distribute t(*, block, block) onto n
 #pragma xmp align p[i][j][k] with t(k, j, i)
 #pragma xmp align bnd[i][j][k] with t(k, j, i)
