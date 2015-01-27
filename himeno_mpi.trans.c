@@ -1890,7 +1890,7 @@ _XMP_exec_task_NODES_FINALIZE(_XMP_TASK_desc);
 return 0;
 }
 }
-extern void xmpc_init_file_himeno_5f_2e_5f_c_5f_pp()
+extern void xmpc_module_init()
 {
 _XMP_init_template_FIXED(&(_XMP_DESC_t), 3, (long long)(0), (long long)(MKMAX - (1)), (long long)(0), (long long)(MJMAX - (1)), (long long)(0), (long long)(MIMAX - (1)));
 _XMP_init_nodes_DYNAMIC_GLOBAL(&(_XMP_DESC_n), 2, -1, (int * )(&(_XMP_NODES_SIZE_n_0)), -1, (int * )(&(_XMP_NODES_SIZE_n_1)), (int * )(&(_XMP_NODES_RANK_n_0)), (int * )(&(_XMP_NODES_RANK_n_1)));
