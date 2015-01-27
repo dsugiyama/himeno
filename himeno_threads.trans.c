@@ -570,24 +570,9 @@ extern int setitimer(int __which, struct itimerval const * __new, struct itimerv
 extern int utimes(char const * __file, struct timeval const __tvp[2]);
 extern int lutimes(char const * __file, struct timeval const __tvp[2]);
 extern int futimes(int __fd, struct timeval const __tvp[2]);
-# 1 "param_const.h"
-int const MX0 = 33;
-# 2 "param_const.h"
-int const MY0 = 33;
-# 3 "param_const.h"
-int const MZ0 = 65;
-# 4 "param_const.h"
-int const MIMAX = 33;
-# 5 "param_const.h"
-int const MJMAX = 33;
-# 6 "param_const.h"
-int const MKMAX = 65;
-# 7 "param_const.h"
-int const NDX0 = 1;
-# 8 "param_const.h"
-int const NDY0 = 1;
-# 9 "param_const.h"
-int const NDZ0 = 1;
+
+#include "param.h"
+
 # 674 "/opt/intel//impi/5.0.1.035/intel64/include/mpi.h"
 extern struct MPIR_T_pvar_handle_s * const MPI_T_PVAR_ALL_HANDLES;
 # 805 "/opt/intel//impi/5.0.1.035/intel64/include/mpi.h"
