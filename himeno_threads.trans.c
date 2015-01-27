@@ -373,64 +373,64 @@ typedef struct anon_type_4__G_fpos_t fpos_t;
 # include "xmp_func_decl.h"
 # include "xmp_index_macro.h"
 # include "xmp_comm_macro.h"
-static void * _XMP_DESC_t;
-static void * _XMP_DESC_n;
-static int _XMP_NODES_SIZE_n_0;
-static int _XMP_NODES_SIZE_n_1;
-static int _XMP_NODES_RANK_n_0;
-static int _XMP_NODES_RANK_n_1;
-static float * _XMP_ADDR_p;
-static void * _XMP_DESC_p;
-static unsigned long long _XMP_GTOL_acc_p_0;
-static unsigned long long _XMP_GTOL_acc_p_1;
-static unsigned long long _XMP_GTOL_acc_p_2;
-static int _XMP_GTOL_temp0_p_0;
-static int _XMP_GTOL_temp0_p_1;
-static float * _XMP_ADDR_bnd;
-static void * _XMP_DESC_bnd;
-static unsigned long long _XMP_GTOL_acc_bnd_0;
-static unsigned long long _XMP_GTOL_acc_bnd_1;
-static unsigned long long _XMP_GTOL_acc_bnd_2;
-static int _XMP_GTOL_temp0_bnd_0;
-static int _XMP_GTOL_temp0_bnd_1;
-static float * _XMP_ADDR_wrk1;
-static void * _XMP_DESC_wrk1;
-static unsigned long long _XMP_GTOL_acc_wrk1_0;
-static unsigned long long _XMP_GTOL_acc_wrk1_1;
-static unsigned long long _XMP_GTOL_acc_wrk1_2;
-static int _XMP_GTOL_temp0_wrk1_0;
-static int _XMP_GTOL_temp0_wrk1_1;
-static float * _XMP_ADDR_wrk2;
-static void * _XMP_DESC_wrk2;
-static unsigned long long _XMP_GTOL_acc_wrk2_0;
-static unsigned long long _XMP_GTOL_acc_wrk2_1;
-static unsigned long long _XMP_GTOL_acc_wrk2_2;
-static int _XMP_GTOL_temp0_wrk2_0;
-static int _XMP_GTOL_temp0_wrk2_1;
-static float * _XMP_ADDR_a;
-static void * _XMP_DESC_a;
-static unsigned long long _XMP_GTOL_acc_a_0;
-static unsigned long long _XMP_GTOL_acc_a_1;
-static unsigned long long _XMP_GTOL_acc_a_2;
-static unsigned long long _XMP_GTOL_acc_a_3;
-static int _XMP_GTOL_temp0_a_1;
-static int _XMP_GTOL_temp0_a_2;
-static float * _XMP_ADDR_b;
-static void * _XMP_DESC_b;
-static unsigned long long _XMP_GTOL_acc_b_0;
-static unsigned long long _XMP_GTOL_acc_b_1;
-static unsigned long long _XMP_GTOL_acc_b_2;
-static unsigned long long _XMP_GTOL_acc_b_3;
-static int _XMP_GTOL_temp0_b_1;
-static int _XMP_GTOL_temp0_b_2;
-static float * _XMP_ADDR_c;
-static void * _XMP_DESC_c;
-static unsigned long long _XMP_GTOL_acc_c_0;
-static unsigned long long _XMP_GTOL_acc_c_1;
-static unsigned long long _XMP_GTOL_acc_c_2;
-static unsigned long long _XMP_GTOL_acc_c_3;
-static int _XMP_GTOL_temp0_c_1;
-static int _XMP_GTOL_temp0_c_2;
+static __thread void * _XMP_DESC_t;
+static __thread void * _XMP_DESC_n;
+static __thread int _XMP_NODES_SIZE_n_0;
+static __thread int _XMP_NODES_SIZE_n_1;
+static __thread int _XMP_NODES_RANK_n_0;
+static __thread int _XMP_NODES_RANK_n_1;
+static __thread float * _XMP_ADDR_p;
+static __thread void * _XMP_DESC_p;
+static __thread unsigned long long _XMP_GTOL_acc_p_0;
+static __thread unsigned long long _XMP_GTOL_acc_p_1;
+static __thread unsigned long long _XMP_GTOL_acc_p_2;
+static __thread int _XMP_GTOL_temp0_p_0;
+static __thread int _XMP_GTOL_temp0_p_1;
+static __thread float * _XMP_ADDR_bnd;
+static __thread void * _XMP_DESC_bnd;
+static __thread unsigned long long _XMP_GTOL_acc_bnd_0;
+static __thread unsigned long long _XMP_GTOL_acc_bnd_1;
+static __thread unsigned long long _XMP_GTOL_acc_bnd_2;
+static __thread int _XMP_GTOL_temp0_bnd_0;
+static __thread int _XMP_GTOL_temp0_bnd_1;
+static __thread float * _XMP_ADDR_wrk1;
+static __thread void * _XMP_DESC_wrk1;
+static __thread unsigned long long _XMP_GTOL_acc_wrk1_0;
+static __thread unsigned long long _XMP_GTOL_acc_wrk1_1;
+static __thread unsigned long long _XMP_GTOL_acc_wrk1_2;
+static __thread int _XMP_GTOL_temp0_wrk1_0;
+static __thread int _XMP_GTOL_temp0_wrk1_1;
+static __thread float * _XMP_ADDR_wrk2;
+static __thread void * _XMP_DESC_wrk2;
+static __thread unsigned long long _XMP_GTOL_acc_wrk2_0;
+static __thread unsigned long long _XMP_GTOL_acc_wrk2_1;
+static __thread unsigned long long _XMP_GTOL_acc_wrk2_2;
+static __thread int _XMP_GTOL_temp0_wrk2_0;
+static __thread int _XMP_GTOL_temp0_wrk2_1;
+static __thread float * _XMP_ADDR_a;
+static __thread void * _XMP_DESC_a;
+static __thread unsigned long long _XMP_GTOL_acc_a_0;
+static __thread unsigned long long _XMP_GTOL_acc_a_1;
+static __thread unsigned long long _XMP_GTOL_acc_a_2;
+static __thread unsigned long long _XMP_GTOL_acc_a_3;
+static __thread int _XMP_GTOL_temp0_a_1;
+static __thread int _XMP_GTOL_temp0_a_2;
+static __thread float * _XMP_ADDR_b;
+static __thread void * _XMP_DESC_b;
+static __thread unsigned long long _XMP_GTOL_acc_b_0;
+static __thread unsigned long long _XMP_GTOL_acc_b_1;
+static __thread unsigned long long _XMP_GTOL_acc_b_2;
+static __thread unsigned long long _XMP_GTOL_acc_b_3;
+static __thread int _XMP_GTOL_temp0_b_1;
+static __thread int _XMP_GTOL_temp0_b_2;
+static __thread float * _XMP_ADDR_c;
+static __thread void * _XMP_DESC_c;
+static __thread unsigned long long _XMP_GTOL_acc_c_0;
+static __thread unsigned long long _XMP_GTOL_acc_c_1;
+static __thread unsigned long long _XMP_GTOL_acc_c_2;
+static __thread unsigned long long _XMP_GTOL_acc_c_3;
+static __thread int _XMP_GTOL_temp0_c_1;
+static __thread int _XMP_GTOL_temp0_c_2;
 extern void xmpc_init_all();
 extern void xmpc_module_init();
 static int xmpc_main(int argc, char * * argv);
@@ -1467,19 +1467,19 @@ double time();
 /* array 'wrk1' is removed by XcalableMP align directive */
 /* array 'wrk2' is removed by XcalableMP align directive */
 # 65 "himeno.c"
-static float omega;
+static __thread float omega;
 # 67 "himeno.c"
-static int ndx;
+static __thread int ndx;
 # 67 "himeno.c"
-static int ndy;
+static __thread int ndy;
 # 67 "himeno.c"
-static int ndz;
+static __thread int ndz;
 # 68 "himeno.c"
-static int imax;
+static __thread int imax;
 # 68 "himeno.c"
-static int jmax;
+static __thread int jmax;
 # 68 "himeno.c"
-static int kmax;
+static __thread int kmax;
 # 70 "himeno.c"
 /* ignored Xcode.XMP_PRAGMA */
 # 71 "himeno.c"
