@@ -38,7 +38,7 @@
 
 #include <stdio.h>
 #include <sys/time.h>
-#include "param.h"
+#include "param_const.h"
 #ifdef _XCALABLEMP
 #include <xmp.h>
 #endif
