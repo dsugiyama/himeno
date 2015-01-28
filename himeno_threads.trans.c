@@ -1504,10 +1504,16 @@ static __thread int kmax;
 /* ignored Xcode.XMP_PRAGMA */
 
 void xmpc_init_thread_all(int argc, char *argv[], int num_threads, int thread_num);
-
 void _XMP_reduce_threads(void *addr, int count, int datatype, int op);
 void _XMP_reduce_threads_fast(void *addr, int count, int datatype, int op);
 
+int atoi(const char *);
+char *getenv(const char *);
+void *malloc(size_t);
+void free(void *);
+
+typedef unsigned long pthread_t;
+struct pthread_attr_type; typedef struct pthread_attr_type pthread_attr_t;
 int pthread_create(pthread_t *, pthread_attr_t *, void *(void *), void *);
 int pthread_join(pthread_t, void **);
 
