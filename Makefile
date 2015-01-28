@@ -1,18 +1,21 @@
 CC = mpiicc
-CFLAGS = -mmic -O3 -std=gnu99 -fno-alias -lm -lxmp -openmp
+CFLAGS = -mmic -O3 -std=gnu99 -fno-alias -openmp
+XMPFLAGS = -lxmp
 MPIFLAGS = -I${HOME}/omni-compiler/include -L${HOME}/omni-compiler/lib
 THREADSFLAGS = -lpthread -I${HOME}/omnixmp-threads/include -L${HOME}/omnixmp-threads/lib
 
-all: himeno_mpi-S himeno_mpi-M himeno_threads-S himeno_threads-M
+all: himeno_mpi-S himeno_mpi-M himeno_threads-S himeno_threads-M himeno_omp
 
 himeno_mpi-S:
-	${CC} -o $@ himeno_mpi.trans.c ${CFLAGS} ${MPIFLAGS} -DSMALL
+	${CC} -o $@ himeno_mpi.trans.c ${CFLAGS} ${XMPFLAGS} ${MPIFLAGS} -DSMALL
 himeno_mpi-M:
-	${CC} -o $@ himeno_mpi.trans.c ${CFLAGS} ${MPIFLAGS} -DMIDDLE
+	${CC} -o $@ himeno_mpi.trans.c ${CFLAGS} ${XMPFLAGS} ${MPIFLAGS} -DMIDDLE
 himeno_threads-S:
-	${CC} -o $@ himeno_threads.trans.c ${CFLAGS} ${THREADSFLAGS} -DSMALL
+	${CC} -o $@ himeno_threads.trans.c ${CFLAGS} ${XMPFLAGS} ${THREADSFLAGS} -DSMALL
 himeno_threads-M:
-	${CC} -o $@ himeno_threads.trans.c ${CFLAGS} ${THREADSFLAGS} -DMIDDLE
+	${CC} -o $@ himeno_threads.trans.c ${CFLAGS} ${XMPFLAGS} ${THREADSFLAGS} -DMIDDLE
+himeno_omp:
+	${CC} -o $@ himeno_omp.c ${CFLAGS}
 
 clean:
-	rm himeno_mpi-S himeno_mpi-M himeno_threads-S himeno_threads-M *.o
+	rm himeno_mpi-S himeno_mpi-M himeno_threads-S himeno_threads-M himeno_omp *.o

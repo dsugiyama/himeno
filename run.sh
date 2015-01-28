@@ -1,9 +1,12 @@
 mpi_exes="himeno_mpi-S himeno_mpi-M"
 threads_exes="himeno_threads-S himeno_threads-M"
+omp_exe="himeno_omp"
+gsizes="S M"
 
 sizes="1x1 1x2 2x2 2x4 4x4 4x8 8x8 8x16 15x16"
+onedsizes="1 2 4 8 16 32 64 128 240"
 
-scp -q $mpi_exes $threads_exes "mic0:~/tmp"
+scp -q $mpi_exes $threads_exes $omp_exe "mic0:~/tmp"
 
 for e in $mpi_exes; do
     echo $e
@@ -23,6 +26,15 @@ for e in $threads_exes; do
         s1=${s#*x}
         python aggregate.py $1 -- \
         XMP_NODE_SIZE0=$s0 XMP_NODE_SIZE1=$s1 ./$e
+    done
+    echo
+done
+
+for g in $gsizes; do
+    echo $omp_exe-$g
+    for s in $onedsizes; do
+        python aggregate.py $1 -- \
+        OMP_NUM_THREADS=$s ./$omp_exe $g
     done
     echo
 done
