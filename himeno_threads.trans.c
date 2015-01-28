@@ -1505,6 +1505,9 @@ static __thread int kmax;
 
 void xmpc_init_thread_all(int argc, char *argv[], int num_threads, int thread_num);
 
+void _XMP_reduce_threads(void *addr, int count, int datatype, int op);
+void _XMP_reduce_threads_fast(void *addr, int count, int datatype, int op);
+
 int pthread_create(pthread_t *, pthread_attr_t *, void *(void *), void *);
 int pthread_join(pthread_t, void **);
 
@@ -1763,7 +1766,7 @@ for(k = _XMP_loop_init_k; k < _XMP_loop_cond_k; k += _XMP_loop_step_k) {
 }
 }
 _XMP_reflect__(_XMP_DESC_p);
-_XMP_M_REDUCE_EXEC(&(gosa), 0x000000001ll, 513, 300);
+_XMP_reduce_threads_fast(&(gosa), 0x000000001ll, 513, 300);
 }
 # 290 "himeno.c"
 return gosa;
@@ -1876,7 +1879,7 @@ gosa = (jacobi(nn));
 cpu1 = (xmp_wtime());
 # 138 "himeno.c"
 cpu = (cpu1 - cpu0);
-_XMP_M_REDUCE_EXEC(&(cpu), 0x000000001ll, 514, 308);
+_XMP_reduce_threads(&(cpu), 0x000000001ll, 514, 308);
 # 141 "himeno.c"
 flop = (fflop(mz, my, mx));
 {
@@ -1914,7 +1917,7 @@ gosa = (jacobi(nn));
 cpu1 = (xmp_wtime());
 # 173 "himeno.c"
 cpu = (cpu1 - cpu0);
-_XMP_M_REDUCE_EXEC(&(cpu), 0x000000001ll, 514, 308);
+_XMP_reduce_threads(&(cpu), 0x000000001ll, 514, 308);
 {
 void * _XMP_TASK_desc = (void * )(0);
 if(_XMP_exec_task_TEMPLATE_PART(&(_XMP_TASK_desc), _XMP_DESC_t, (int)(0), (long long)(0), (long long)(0), (long long)(1), (int)(0), (long long)(0), (long long)(0), (long long)(1), (int)(0), (long long)(0), (long long)(0), (long long)(1))) {
