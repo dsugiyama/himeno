@@ -19,8 +19,8 @@ done
 for e in $threads_exes; do
     echo $e
     for s in $sizes; do
-        s0=${size%x*}
-        s1=${size#*x}
+        s0=${s%x*}
+        s1=${s#*x}
         python aggregate.py $1 -- \
         XMP_NODE_SIZE0=$s0 XMP_NODE_SIZE1=$s1 ./$e
     done
