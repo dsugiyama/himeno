@@ -1502,15 +1502,61 @@ static __thread int kmax;
 /* ignored Xcode.XMP_PRAGMA */
 # 80 "himeno.c"
 /* ignored Xcode.XMP_PRAGMA */
-int main(int argc, char * * argv)
+
+void xmpc_init_thread_all(int argc, char *argv[], int num_threads, int thread_num);
+
+int pthread_create(pthread_t *, pthread_attr_t *, void *(void *), void *);
+int pthread_join(pthread_t, void **);
+
+struct args
 {
-int r;
-xmpc_init_all(argc, argv);
-xmpc_module_init();
-r = (xmpc_main(argc, argv));
-xmpc_finalize_all(r);
-return r;
+    int argc;
+    char *argv[];
+    int num_threads;
+    int thread_num;
+};
+
+void *thread_main(void *a)
+{
+    struct args *aa = (struct args *)a;
+
+    int r;
+    xmpc_init_thread_all(aa->argc, aa->argv, aa->num_threads, aa->thread_num);
+    xmpc_module_init();
+    r = (xmpc_main(aa->argc, aa->argv));
+    xmpc_finalize_all(r);
+    return (void *)r;
 }
+
+int main(int argc, char *argv[])
+{
+    int nth = atoi(getenv("XMP_NODE_SIZE0")) * atoi(getenv("XMP_NODE_SIZE1"));
+    pthread_t *threads = malloc((nth - 1) * sizeof(pthread_t));
+    struct args *a = malloc(nth * sizeof(struct args));
+
+    for (int i = 0; i < nth; i++) {
+        a[i].argc = argc;
+        a[i].argv = argv;
+        a[i].num_threads = nth;
+        a[i].thread_num = i;
+
+        if (i != 0) {
+            pthread_create(&(threads[i - 1]), NULL, thread_main, &(a[i]));
+        }
+    }
+
+    int r = (int)thread_main(&(a[0]));
+
+    for (int i = 1; i < nth; i++) {
+        pthread_join(threads[i - 1], NULL);
+    }
+
+    free(threads);
+    free(a);
+
+    return r;
+}
+
 double fflop(int mx, int my, int mz)
 {
 {
