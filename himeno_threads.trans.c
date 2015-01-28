@@ -1514,7 +1514,7 @@ int pthread_join(pthread_t, void **);
 struct args
 {
     int argc;
-    char *argv[];
+    char **argv;
     int num_threads;
     int thread_num;
 };
