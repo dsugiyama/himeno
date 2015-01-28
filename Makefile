@@ -1,27 +1,22 @@
-CC = xmpcc
-CFLAGS = -O3
-LDFLAGS =
+CC = mpiicc
+CFLAGS = -mmic -O3 -std=gnu99 -fno-alias -lm -lxmp -openmp
+MPIFLAGS = -I${HOME}/omni-compiler/include -L${HOME}/omni-compiler/lib
+THREADSFLAGS = -lpthread -I${HOME}/omnixmp-threads/include -L${HOME}/omnixmp-threads/lib
 
-ifndef NDX
-NDX = 1
-endif
+all: himeno_mpi-S himeno_mpi-M himeno_mpi-L himeno_threads-S himeno_threads-M himeno_threads-L
 
-ifndef NDY
-NDY = 1
-endif
-
-all: himenoXMP-XS himenoXMP-S himenoXMP-M himenoXMP-L himenoXMP-XL
-
-himenoXMP-XS:
-	${CC} ${CFLAGS} ${LDFLAGS} -o $@ himeno.c -DXSMALL -DNDX=$(NDX) -DNDY=$(NDY)
-himenoXMP-S:
-	${CC} ${CFLAGS} ${LDFLAGS} -o $@ himeno.c -DSMALL -DNDX=$(NDX) -DNDY=$(NDY)
-himenoXMP-M:
-	${CC} ${CFLAGS} ${LDFLAGS} -o $@ himeno.c -DMIDDLE -DNDX=$(NDX) -DNDY=$(NDY)
-himenoXMP-L:
-	${CC} ${CFLAGS} ${LDFLAGS} -o $@ himeno.c -DLARGE -DNDX=$(NDX) -DNDY=$(NDY)
-himenoXMP-XL:
-	${CC} ${CFLAGS} ${LDFLAGS} -o $@ himeno.c -DXLARGE -DNDX=$(NDX) -DNDY=$(NDY)
+himeno_mpi-S:
+	${CC} -o $@ himeno_mpi.trans.c ${CFLAGS} ${MPIFLAGS} -DSMALL
+himeno_mpi-M:
+	${CC} -o $@ himeno_mpi.trans.c ${CFLAGS} ${MPIFLAGS} -DMIDDLE
+himeno_mpi-L:
+	${CC} -o $@ himeno_mpi.trans.c ${CFLAGS} ${MPIFLAGS} -DLARGE
+himeno_threads-S:
+	${CC} -o $@ himeno_threads.trans.c ${CFLAGS} ${THREADSFLAGS} -DSMALL
+himeno_threads-M:
+	${CC} -o $@ himeno_threads.trans.c ${CFLAGS} ${THREADSFLAGS} -DMIDDLE
+himeno_threads-L:
+	${CC} -o $@ himeno_threads.trans.c ${CFLAGS} ${THREADSFLAGS} -DLARGE
 
 clean:
-	rm himenoXMP-XS himenoXMP-S himenoXMP-M himenoXMP-L himenoXMP-XL *.o
+	rm himeno_mpi-S himeno_mpi-M himeno_mpi-L himeno_threads-S himeno_threads-M himeno_threads-L *.o
