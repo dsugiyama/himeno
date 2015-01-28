@@ -437,11 +437,11 @@ static int xmpc_main(int argc, char * * argv);
 extern void xmpc_finalize_all();
 extern void xmpc_init_file_himeno_5f_2e_5f_c_5f_pp();
 extern void xmpc_finalize_file_himeno_5f_2e_5f_c_5f_pp();
-# 346 "/usr/include/libio.h"
+# 348 "/usr/linux-k1om-4.7/linux-k1om/usr/include/libio.h"
 extern struct _IO_FILE_plus _IO_2_1_stdin_;
-# 347 "/usr/include/libio.h"
+# 349 "/usr/linux-k1om-4.7/linux-k1om/usr/include/libio.h"
 extern struct _IO_FILE_plus _IO_2_1_stdout_;
-# 348 "/usr/include/libio.h"
+# 350 "/usr/linux-k1om-4.7/linux-k1om/usr/include/libio.h"
 extern struct _IO_FILE_plus _IO_2_1_stderr_;
 extern int __underflow(struct _IO_FILE * );
 extern int __uflow(struct _IO_FILE * );
@@ -461,11 +461,11 @@ extern unsigned long _IO_sgetn(struct _IO_FILE * , void * , unsigned long);
 extern long _IO_seekoff(struct _IO_FILE * , long, int, int);
 extern long _IO_seekpos(struct _IO_FILE * , long, int);
 extern void _IO_free_backup_area(struct _IO_FILE * );
-# 165 "/usr/include/stdio.h"
+# 165 "/usr/linux-k1om-4.7/linux-k1om/usr/include/stdio.h"
 extern struct _IO_FILE * stdin;
-# 166 "/usr/include/stdio.h"
+# 166 "/usr/linux-k1om-4.7/linux-k1om/usr/include/stdio.h"
 extern struct _IO_FILE * stdout;
-# 167 "/usr/include/stdio.h"
+# 167 "/usr/linux-k1om-4.7/linux-k1om/usr/include/stdio.h"
 extern struct _IO_FILE * stderr;
 extern int remove(char const * __filename);
 extern int rename(char const * __old, char const * __new);
@@ -548,9 +548,9 @@ extern void clearerr_unlocked(struct _IO_FILE * __stream);
 extern int feof_unlocked(struct _IO_FILE * __stream);
 extern int ferror_unlocked(struct _IO_FILE * __stream);
 extern void perror(char const * __s);
-# 27 "/usr/include/bits/sys_errlist.h"
+# 27 "/usr/linux-k1om-4.7/linux-k1om/usr/include/bits/sys_errlist.h"
 extern int sys_nerr;
-# 28 "/usr/include/bits/sys_errlist.h"
+# 28 "/usr/linux-k1om-4.7/linux-k1om/usr/include/bits/sys_errlist.h"
 extern char const * const sys_errlist[];
 extern int fileno(struct _IO_FILE * __stream);
 extern int fileno_unlocked(struct _IO_FILE * __stream);
@@ -573,15 +573,15 @@ extern int futimes(int __fd, struct timeval const __tvp[2]);
 
 #include "param.h"
 
-# 674 "/opt/intel//impi/5.0.1.035/intel64/include/mpi.h"
+# 674 "/opt/intel//impi/5.0.1.035/mic/include/mpi.h"
 extern struct MPIR_T_pvar_handle_s * const MPI_T_PVAR_ALL_HANDLES;
-# 805 "/opt/intel//impi/5.0.1.035/intel64/include/mpi.h"
+# 805 "/opt/intel//impi/5.0.1.035/mic/include/mpi.h"
 extern int * MPI_F_STATUS_IGNORE;
-# 806 "/opt/intel//impi/5.0.1.035/intel64/include/mpi.h"
+# 806 "/opt/intel//impi/5.0.1.035/mic/include/mpi.h"
 extern int * MPI_F_STATUSES_IGNORE;
-# 807 "/opt/intel//impi/5.0.1.035/intel64/include/mpi.h"
+# 807 "/opt/intel//impi/5.0.1.035/mic/include/mpi.h"
 extern int * const MPI_UNWEIGHTED;
-# 808 "/opt/intel//impi/5.0.1.035/intel64/include/mpi.h"
+# 808 "/opt/intel//impi/5.0.1.035/mic/include/mpi.h"
 extern int * const MPI_WEIGHTS_EMPTY;
 int MPI_Send(void const * buf, int count, int datatype, int dest, int tag, int comm);
 int MPI_Recv(void * buf, int count, int datatype, int source, int tag, int comm, struct MPI_Status * status);
