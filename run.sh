@@ -31,14 +31,14 @@ for e in $threads_exes; do
     echo
 done
 
-for g in $gsizes; do
-    echo $omp_exe-$g
-    for s in $onedsizes; do
-        python aggregate.py $1 -- \
-        OMP_NUM_THREADS=$s ./$omp_exe $g
-    done
-    echo
-done
+# for g in $gsizes; do
+#     echo $omp_exe-$g
+#     for s in $onedsizes; do
+#         python aggregate.py $1 -- \
+#         OMP_NUM_THREADS=$s ./$omp_exe $g
+#     done
+#     echo
+# done
 
 for e in $ompx_exes; do
     echo $e
