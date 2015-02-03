@@ -1,6 +1,7 @@
 mpi_exes="himeno_mpi-S himeno_mpi-M"
 threads_exes="himeno_threads-S himeno_threads-M"
 omp_exe="himeno_omp"
+ompx_exes="himeno_ompx-S himeno_ompx-M"
 gsizes="S M"
 
 sizes="1x1 1x2 2x2 2x4 4x4 4x8 8x8 8x16 15x16"
@@ -35,6 +36,15 @@ for g in $gsizes; do
     for s in $onedsizes; do
         python aggregate.py $1 -- \
         OMP_NUM_THREADS=$s ./$omp_exe $g
+    done
+    echo
+done
+
+for e in $ompx_exes; do
+    echo $e
+    for s in $onedsizes; do
+        python aggregate.py $1 -- \
+        OMP_NUM_THREADS=$s ./$e
     done
     echo
 done
