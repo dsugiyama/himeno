@@ -572,6 +572,7 @@ extern int lutimes(char const * __file, struct timeval const __tvp[2]);
 extern int futimes(int __fd, struct timeval const __tvp[2]);
 
 #include "param.h"
+#include <immintrin.h>
 
 # 674 "/opt/intel//impi/5.0.1.035/mic/include/mpi.h"
 extern struct MPIR_T_pvar_handle_s * const MPI_T_PVAR_ALL_HANDLES;
