@@ -7,7 +7,7 @@ gsizes="S M"
 sizes="1x1 1x2 2x2 2x4 4x4 4x8 8x8 8x16 15x16"
 onedsizes="1 2 4 8 16 32 64 128 240"
 
-scp -q $mpi_exes $threads_exes $omp_exe "mic0:~/tmp"
+scp -q $mpi_exes $threads_exes $omp_exe $ompx_exes "mic0:~/tmp"
 
 for e in $mpi_exes; do
     echo $e
