@@ -37,6 +37,7 @@
 ********************************************************************/
 
 #include <stdio.h>
+#include <omp.h>
 
 #ifdef SSMALL
 #define MIMAX            33
