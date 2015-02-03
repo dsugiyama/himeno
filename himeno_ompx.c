@@ -150,7 +150,7 @@ initmt()
 {
 	int i,j,k;
 
-  #pragma omp parallel for
+  #pragma omp parallel for private(i, j, k)
   for(i=0 ; i<MIMAX ; i++)
     for(j=0 ; j<MJMAX ; j++)
       for(k=0 ; k<MKMAX ; k++){
@@ -169,7 +169,7 @@ initmt()
         bnd[i][j][k]=0.0;
       }
 
-  #pragma omp parallel for
+  #pragma omp parallel for private(i, j, k)
   for(i=0 ; i<imax ; i++)
     for(j=0 ; j<jmax ; j++)
       for(k=0 ; k<kmax ; k++){
@@ -195,12 +195,12 @@ jacobi(int nn)
   int i,j,k,n;
   float gosa, s0, ss;
 
-  #pragma omp parallel
+  #pragma omp parallel private(i, j, k, n, s0, ss)
   {
     for(n=0 ; n<nn ; ++n){
       gosa = 0.0;
 
-      #pragma omp for reduction(+:gosa) private(i, j, k, s0, ss) collapse(2)
+      #pragma omp for reduction(+:gosa) collapse(2)
       for(i=1 ; i<imax-1 ; i++)
         for(j=1 ; j<jmax-1 ; j++)
           for(k=1 ; k<kmax-1 ; k++){
@@ -226,7 +226,7 @@ jacobi(int nn)
             wrk2[i][j][k] = p[i][j][k] + omega * ss;
           }
 
-      #pragma omp for private(i, j, k) collapse(2)
+      #pragma omp for collapse(2)
       for(i=1 ; i<imax-1 ; ++i)
         for(j=1 ; j<jmax-1 ; ++j)
           for(k=1 ; k<kmax-1 ; ++k)
