@@ -1,6 +1,6 @@
 CC = icc
 MPI_CC = mpiicc
-CFLAGS = -mmic -O3 -std=gnu99 -fno-alias -openmp
+CFLAGS = -mmic -O3 -ipo -fno-alias -std=gnu99 -openmp
 XMPFLAGS = -lxmp
 MPIFLAGS = -I${HOME}/omni-compiler/include -L${HOME}/omni-compiler/lib
 THREADSFLAGS = -lpthread -I${HOME}/omnixmp-threads/include -L${HOME}/omnixmp-threads/lib
