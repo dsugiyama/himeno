@@ -1737,64 +1737,67 @@ for(j = _XMP_loop_init_j; j < _XMP_loop_cond_j; j += _XMP_loop_step_j) {
 for(k = _XMP_loop_init_k; k < _XMP_loop_cond_k; k += _XMP_loop_step_k) {
 # 261 "himeno.c"
 
+#define L1DIST 0x80
+#define L2DIST 0x200
+
   // a
-  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_4(_XMP_ADDR_a, 0, i, j, k, _XMP_GTOL_acc_a_0, _XMP_GTOL_acc_a_1, _XMP_GTOL_acc_a_2)) + 0x200, _MM_HINT_T1);
-  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_4(_XMP_ADDR_a, 0, i, j, k, _XMP_GTOL_acc_a_0, _XMP_GTOL_acc_a_1, _XMP_GTOL_acc_a_2)) + 0x80 , _MM_HINT_T0);
-  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_4(_XMP_ADDR_a, 1, i, j, k, _XMP_GTOL_acc_a_0, _XMP_GTOL_acc_a_1, _XMP_GTOL_acc_a_2)) + 0x200, _MM_HINT_T1);
-  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_4(_XMP_ADDR_a, 1, i, j, k, _XMP_GTOL_acc_a_0, _XMP_GTOL_acc_a_1, _XMP_GTOL_acc_a_2)) + 0x80 , _MM_HINT_T0);
-  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_4(_XMP_ADDR_a, 2, i, j, k, _XMP_GTOL_acc_a_0, _XMP_GTOL_acc_a_1, _XMP_GTOL_acc_a_2)) + 0x200, _MM_HINT_T1);
-  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_4(_XMP_ADDR_a, 2, i, j, k, _XMP_GTOL_acc_a_0, _XMP_GTOL_acc_a_1, _XMP_GTOL_acc_a_2)) + 0x80 , _MM_HINT_T0);
+  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_4(_XMP_ADDR_a, 0, i, j, k, _XMP_GTOL_acc_a_0, _XMP_GTOL_acc_a_1, _XMP_GTOL_acc_a_2)) + L2DIST, _MM_HINT_T1);
+  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_4(_XMP_ADDR_a, 0, i, j, k, _XMP_GTOL_acc_a_0, _XMP_GTOL_acc_a_1, _XMP_GTOL_acc_a_2)) + L1DIST , _MM_HINT_T0);
+  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_4(_XMP_ADDR_a, 1, i, j, k, _XMP_GTOL_acc_a_0, _XMP_GTOL_acc_a_1, _XMP_GTOL_acc_a_2)) + L2DIST, _MM_HINT_T1);
+  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_4(_XMP_ADDR_a, 1, i, j, k, _XMP_GTOL_acc_a_0, _XMP_GTOL_acc_a_1, _XMP_GTOL_acc_a_2)) + L1DIST , _MM_HINT_T0);
+  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_4(_XMP_ADDR_a, 2, i, j, k, _XMP_GTOL_acc_a_0, _XMP_GTOL_acc_a_1, _XMP_GTOL_acc_a_2)) + L2DIST, _MM_HINT_T1);
+  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_4(_XMP_ADDR_a, 2, i, j, k, _XMP_GTOL_acc_a_0, _XMP_GTOL_acc_a_1, _XMP_GTOL_acc_a_2)) + L1DIST , _MM_HINT_T0);
 
   // b
-  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_4(_XMP_ADDR_b, 0, i, j, k, _XMP_GTOL_acc_b_0, _XMP_GTOL_acc_b_1, _XMP_GTOL_acc_b_2)) + 0x200, _MM_HINT_T1);
-  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_4(_XMP_ADDR_b, 0, i, j, k, _XMP_GTOL_acc_b_0, _XMP_GTOL_acc_b_1, _XMP_GTOL_acc_b_2)) + 0x80 , _MM_HINT_T0);
-  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_4(_XMP_ADDR_b, 1, i, j, k, _XMP_GTOL_acc_b_0, _XMP_GTOL_acc_b_1, _XMP_GTOL_acc_b_2)) + 0x200, _MM_HINT_T1);
-  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_4(_XMP_ADDR_b, 1, i, j, k, _XMP_GTOL_acc_b_0, _XMP_GTOL_acc_b_1, _XMP_GTOL_acc_b_2)) + 0x80 , _MM_HINT_T0);
-  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_4(_XMP_ADDR_b, 2, i, j, k, _XMP_GTOL_acc_b_0, _XMP_GTOL_acc_b_1, _XMP_GTOL_acc_b_2)) + 0x200, _MM_HINT_T1);
-  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_4(_XMP_ADDR_b, 2, i, j, k, _XMP_GTOL_acc_b_0, _XMP_GTOL_acc_b_1, _XMP_GTOL_acc_b_2)) + 0x80 , _MM_HINT_T0);
+  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_4(_XMP_ADDR_b, 0, i, j, k, _XMP_GTOL_acc_b_0, _XMP_GTOL_acc_b_1, _XMP_GTOL_acc_b_2)) + L2DIST, _MM_HINT_T1);
+  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_4(_XMP_ADDR_b, 0, i, j, k, _XMP_GTOL_acc_b_0, _XMP_GTOL_acc_b_1, _XMP_GTOL_acc_b_2)) + L1DIST , _MM_HINT_T0);
+  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_4(_XMP_ADDR_b, 1, i, j, k, _XMP_GTOL_acc_b_0, _XMP_GTOL_acc_b_1, _XMP_GTOL_acc_b_2)) + L2DIST, _MM_HINT_T1);
+  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_4(_XMP_ADDR_b, 1, i, j, k, _XMP_GTOL_acc_b_0, _XMP_GTOL_acc_b_1, _XMP_GTOL_acc_b_2)) + L1DIST , _MM_HINT_T0);
+  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_4(_XMP_ADDR_b, 2, i, j, k, _XMP_GTOL_acc_b_0, _XMP_GTOL_acc_b_1, _XMP_GTOL_acc_b_2)) + L2DIST, _MM_HINT_T1);
+  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_4(_XMP_ADDR_b, 2, i, j, k, _XMP_GTOL_acc_b_0, _XMP_GTOL_acc_b_1, _XMP_GTOL_acc_b_2)) + L1DIST , _MM_HINT_T0);
 
   // c
-  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_4(_XMP_ADDR_c, 0, i, j, k, _XMP_GTOL_acc_c_0, _XMP_GTOL_acc_c_1, _XMP_GTOL_acc_c_2)) + 0x200, _MM_HINT_T1);
-  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_4(_XMP_ADDR_c, 0, i, j, k, _XMP_GTOL_acc_c_0, _XMP_GTOL_acc_c_1, _XMP_GTOL_acc_c_2)) + 0x80 , _MM_HINT_T0);
-  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_4(_XMP_ADDR_c, 1, i, j, k, _XMP_GTOL_acc_c_0, _XMP_GTOL_acc_c_1, _XMP_GTOL_acc_c_2)) + 0x200, _MM_HINT_T1);
-  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_4(_XMP_ADDR_c, 1, i, j, k, _XMP_GTOL_acc_c_0, _XMP_GTOL_acc_c_1, _XMP_GTOL_acc_c_2)) + 0x80 , _MM_HINT_T0);
-  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_4(_XMP_ADDR_c, 2, i, j, k, _XMP_GTOL_acc_c_0, _XMP_GTOL_acc_c_1, _XMP_GTOL_acc_c_2)) + 0x200, _MM_HINT_T1);
-  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_4(_XMP_ADDR_c, 2, i, j, k, _XMP_GTOL_acc_c_0, _XMP_GTOL_acc_c_1, _XMP_GTOL_acc_c_2)) + 0x80 , _MM_HINT_T0);
+  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_4(_XMP_ADDR_c, 0, i, j, k, _XMP_GTOL_acc_c_0, _XMP_GTOL_acc_c_1, _XMP_GTOL_acc_c_2)) + L2DIST, _MM_HINT_T1);
+  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_4(_XMP_ADDR_c, 0, i, j, k, _XMP_GTOL_acc_c_0, _XMP_GTOL_acc_c_1, _XMP_GTOL_acc_c_2)) + L1DIST , _MM_HINT_T0);
+  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_4(_XMP_ADDR_c, 1, i, j, k, _XMP_GTOL_acc_c_0, _XMP_GTOL_acc_c_1, _XMP_GTOL_acc_c_2)) + L2DIST, _MM_HINT_T1);
+  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_4(_XMP_ADDR_c, 1, i, j, k, _XMP_GTOL_acc_c_0, _XMP_GTOL_acc_c_1, _XMP_GTOL_acc_c_2)) + L1DIST , _MM_HINT_T0);
+  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_4(_XMP_ADDR_c, 2, i, j, k, _XMP_GTOL_acc_c_0, _XMP_GTOL_acc_c_1, _XMP_GTOL_acc_c_2)) + L2DIST, _MM_HINT_T1);
+  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_4(_XMP_ADDR_c, 2, i, j, k, _XMP_GTOL_acc_c_0, _XMP_GTOL_acc_c_1, _XMP_GTOL_acc_c_2)) + L1DIST , _MM_HINT_T0);
 
   // p
-  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_3(_XMP_ADDR_p, (i    ) + 1, (j    ) + 1, k - 1, _XMP_GTOL_acc_p_0, _XMP_GTOL_acc_p_1)) + 0x200, _MM_HINT_T1);
-  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_3(_XMP_ADDR_p, (i    ) + 1, (j    ) + 1, k - 1, _XMP_GTOL_acc_p_0, _XMP_GTOL_acc_p_1)) + 0x80 , _MM_HINT_T0);
-  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_3(_XMP_ADDR_p, (i    ) + 1, (j + 1) + 1, k - 1, _XMP_GTOL_acc_p_0, _XMP_GTOL_acc_p_1)) + 0x200, _MM_HINT_T1);
-  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_3(_XMP_ADDR_p, (i    ) + 1, (j + 1) + 1, k - 1, _XMP_GTOL_acc_p_0, _XMP_GTOL_acc_p_1)) + 0x80 , _MM_HINT_T0);
-  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_3(_XMP_ADDR_p, (i    ) + 1, (j - 1) + 1, k - 1, _XMP_GTOL_acc_p_0, _XMP_GTOL_acc_p_1)) + 0x200, _MM_HINT_T1);
-  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_3(_XMP_ADDR_p, (i    ) + 1, (j - 1) + 1, k - 1, _XMP_GTOL_acc_p_0, _XMP_GTOL_acc_p_1)) + 0x80 , _MM_HINT_T0);
-  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_3(_XMP_ADDR_p, (i + 1) + 1, (j    ) + 1, k - 1, _XMP_GTOL_acc_p_0, _XMP_GTOL_acc_p_1)) + 0x200, _MM_HINT_T1);
-  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_3(_XMP_ADDR_p, (i + 1) + 1, (j    ) + 1, k - 1, _XMP_GTOL_acc_p_0, _XMP_GTOL_acc_p_1)) + 0x80 , _MM_HINT_T0);
-  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_3(_XMP_ADDR_p, (i + 1) + 1, (j + 1) + 1, k    , _XMP_GTOL_acc_p_0, _XMP_GTOL_acc_p_1)) + 0x200, _MM_HINT_T1);
-  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_3(_XMP_ADDR_p, (i + 1) + 1, (j + 1) + 1, k    , _XMP_GTOL_acc_p_0, _XMP_GTOL_acc_p_1)) + 0x80 , _MM_HINT_T0);
-  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_3(_XMP_ADDR_p, (i + 1) + 1, (j - 1) + 1, k    , _XMP_GTOL_acc_p_0, _XMP_GTOL_acc_p_1)) + 0x200, _MM_HINT_T1);
-  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_3(_XMP_ADDR_p, (i + 1) + 1, (j - 1) + 1, k    , _XMP_GTOL_acc_p_0, _XMP_GTOL_acc_p_1)) + 0x80 , _MM_HINT_T0);
-  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_3(_XMP_ADDR_p, (i - 1) + 1, (j    ) + 1, k - 1, _XMP_GTOL_acc_p_0, _XMP_GTOL_acc_p_1)) + 0x200, _MM_HINT_T1);
-  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_3(_XMP_ADDR_p, (i - 1) + 1, (j    ) + 1, k - 1, _XMP_GTOL_acc_p_0, _XMP_GTOL_acc_p_1)) + 0x80 , _MM_HINT_T0);
-  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_3(_XMP_ADDR_p, (i - 1) + 1, (j + 1) + 1, k    , _XMP_GTOL_acc_p_0, _XMP_GTOL_acc_p_1)) + 0x200, _MM_HINT_T1);
-  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_3(_XMP_ADDR_p, (i - 1) + 1, (j + 1) + 1, k    , _XMP_GTOL_acc_p_0, _XMP_GTOL_acc_p_1)) + 0x80 , _MM_HINT_T0);
-  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_3(_XMP_ADDR_p, (i - 1) + 1, (j - 1) + 1, k    , _XMP_GTOL_acc_p_0, _XMP_GTOL_acc_p_1)) + 0x200, _MM_HINT_T1);
-  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_3(_XMP_ADDR_p, (i - 1) + 1, (j - 1) + 1, k    , _XMP_GTOL_acc_p_0, _XMP_GTOL_acc_p_1)) + 0x80 , _MM_HINT_T0);
+  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_3(_XMP_ADDR_p, (i    ) + 1, (j    ) + 1, k - 1, _XMP_GTOL_acc_p_0, _XMP_GTOL_acc_p_1)) + L2DIST, _MM_HINT_T1);
+  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_3(_XMP_ADDR_p, (i    ) + 1, (j    ) + 1, k - 1, _XMP_GTOL_acc_p_0, _XMP_GTOL_acc_p_1)) + L1DIST , _MM_HINT_T0);
+  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_3(_XMP_ADDR_p, (i    ) + 1, (j + 1) + 1, k - 1, _XMP_GTOL_acc_p_0, _XMP_GTOL_acc_p_1)) + L2DIST, _MM_HINT_T1);
+  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_3(_XMP_ADDR_p, (i    ) + 1, (j + 1) + 1, k - 1, _XMP_GTOL_acc_p_0, _XMP_GTOL_acc_p_1)) + L1DIST , _MM_HINT_T0);
+  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_3(_XMP_ADDR_p, (i    ) + 1, (j - 1) + 1, k - 1, _XMP_GTOL_acc_p_0, _XMP_GTOL_acc_p_1)) + L2DIST, _MM_HINT_T1);
+  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_3(_XMP_ADDR_p, (i    ) + 1, (j - 1) + 1, k - 1, _XMP_GTOL_acc_p_0, _XMP_GTOL_acc_p_1)) + L1DIST , _MM_HINT_T0);
+  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_3(_XMP_ADDR_p, (i + 1) + 1, (j    ) + 1, k - 1, _XMP_GTOL_acc_p_0, _XMP_GTOL_acc_p_1)) + L2DIST, _MM_HINT_T1);
+  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_3(_XMP_ADDR_p, (i + 1) + 1, (j    ) + 1, k - 1, _XMP_GTOL_acc_p_0, _XMP_GTOL_acc_p_1)) + L1DIST , _MM_HINT_T0);
+  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_3(_XMP_ADDR_p, (i + 1) + 1, (j + 1) + 1, k    , _XMP_GTOL_acc_p_0, _XMP_GTOL_acc_p_1)) + L2DIST, _MM_HINT_T1);
+  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_3(_XMP_ADDR_p, (i + 1) + 1, (j + 1) + 1, k    , _XMP_GTOL_acc_p_0, _XMP_GTOL_acc_p_1)) + L1DIST , _MM_HINT_T0);
+  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_3(_XMP_ADDR_p, (i + 1) + 1, (j - 1) + 1, k    , _XMP_GTOL_acc_p_0, _XMP_GTOL_acc_p_1)) + L2DIST, _MM_HINT_T1);
+  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_3(_XMP_ADDR_p, (i + 1) + 1, (j - 1) + 1, k    , _XMP_GTOL_acc_p_0, _XMP_GTOL_acc_p_1)) + L1DIST , _MM_HINT_T0);
+  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_3(_XMP_ADDR_p, (i - 1) + 1, (j    ) + 1, k - 1, _XMP_GTOL_acc_p_0, _XMP_GTOL_acc_p_1)) + L2DIST, _MM_HINT_T1);
+  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_3(_XMP_ADDR_p, (i - 1) + 1, (j    ) + 1, k - 1, _XMP_GTOL_acc_p_0, _XMP_GTOL_acc_p_1)) + L1DIST , _MM_HINT_T0);
+  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_3(_XMP_ADDR_p, (i - 1) + 1, (j + 1) + 1, k    , _XMP_GTOL_acc_p_0, _XMP_GTOL_acc_p_1)) + L2DIST, _MM_HINT_T1);
+  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_3(_XMP_ADDR_p, (i - 1) + 1, (j + 1) + 1, k    , _XMP_GTOL_acc_p_0, _XMP_GTOL_acc_p_1)) + L1DIST , _MM_HINT_T0);
+  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_3(_XMP_ADDR_p, (i - 1) + 1, (j - 1) + 1, k    , _XMP_GTOL_acc_p_0, _XMP_GTOL_acc_p_1)) + L2DIST, _MM_HINT_T1);
+  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_3(_XMP_ADDR_p, (i - 1) + 1, (j - 1) + 1, k    , _XMP_GTOL_acc_p_0, _XMP_GTOL_acc_p_1)) + L1DIST , _MM_HINT_T0);
 
   // wrk1
-  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_3(_XMP_ADDR_wrk1, i, j, k, _XMP_GTOL_acc_wrk1_0, _XMP_GTOL_acc_wrk1_1)) + 0x200, _MM_HINT_T1);
-  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_3(_XMP_ADDR_wrk1, i, j, k, _XMP_GTOL_acc_wrk1_0, _XMP_GTOL_acc_wrk1_1)) + 0x80 , _MM_HINT_T0);
+  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_3(_XMP_ADDR_wrk1, i, j, k, _XMP_GTOL_acc_wrk1_0, _XMP_GTOL_acc_wrk1_1)) + L2DIST, _MM_HINT_T1);
+  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_3(_XMP_ADDR_wrk1, i, j, k, _XMP_GTOL_acc_wrk1_0, _XMP_GTOL_acc_wrk1_1)) + L1DIST , _MM_HINT_T0);
 
 s0 = (((((((((((*(_XMP_M_GET_ADDR_E_4(_XMP_ADDR_a, 0, i, j, k, _XMP_GTOL_acc_a_0, _XMP_GTOL_acc_a_1, _XMP_GTOL_acc_a_2))) * (*(_XMP_M_GET_ADDR_E_3(_XMP_ADDR_p, (i + (1)) + (1), j + (1), k, _XMP_GTOL_acc_p_0, _XMP_GTOL_acc_p_1)))) + ((*(_XMP_M_GET_ADDR_E_4(_XMP_ADDR_a, 1, i, j, k, _XMP_GTOL_acc_a_0, _XMP_GTOL_acc_a_1, _XMP_GTOL_acc_a_2))) * (*(_XMP_M_GET_ADDR_E_3(_XMP_ADDR_p, i + (1), (j + (1)) + (1), k, _XMP_GTOL_acc_p_0, _XMP_GTOL_acc_p_1))))) + ((*(_XMP_M_GET_ADDR_E_4(_XMP_ADDR_a, 2, i, j, k, _XMP_GTOL_acc_a_0, _XMP_GTOL_acc_a_1, _XMP_GTOL_acc_a_2))) * (*(_XMP_M_GET_ADDR_E_3(_XMP_ADDR_p, i + (1), j + (1), k + (1), _XMP_GTOL_acc_p_0, _XMP_GTOL_acc_p_1))))) + ((*(_XMP_M_GET_ADDR_E_4(_XMP_ADDR_b, 0, i, j, k, _XMP_GTOL_acc_b_0, _XMP_GTOL_acc_b_1, _XMP_GTOL_acc_b_2))) * ((((*(_XMP_M_GET_ADDR_E_3(_XMP_ADDR_p, (i + (1)) + (1), (j + (1)) + (1), k, _XMP_GTOL_acc_p_0, _XMP_GTOL_acc_p_1))) - (*(_XMP_M_GET_ADDR_E_3(_XMP_ADDR_p, (i + (1)) + (1), (j + (1)) - (1), k, _XMP_GTOL_acc_p_0, _XMP_GTOL_acc_p_1)))) - (*(_XMP_M_GET_ADDR_E_3(_XMP_ADDR_p, (i + (1)) - (1), (j + (1)) + (1), k, _XMP_GTOL_acc_p_0, _XMP_GTOL_acc_p_1)))) + (*(_XMP_M_GET_ADDR_E_3(_XMP_ADDR_p, (i + (1)) - (1), (j + (1)) - (1), k, _XMP_GTOL_acc_p_0, _XMP_GTOL_acc_p_1)))))) + ((*(_XMP_M_GET_ADDR_E_4(_XMP_ADDR_b, 1, i, j, k, _XMP_GTOL_acc_b_0, _XMP_GTOL_acc_b_1, _XMP_GTOL_acc_b_2))) * ((((*(_XMP_M_GET_ADDR_E_3(_XMP_ADDR_p, i + (1), (j + (1)) + (1), k + (1), _XMP_GTOL_acc_p_0, _XMP_GTOL_acc_p_1))) - (*(_XMP_M_GET_ADDR_E_3(_XMP_ADDR_p, i + (1), (j + (1)) - (1), k + (1), _XMP_GTOL_acc_p_0, _XMP_GTOL_acc_p_1)))) - (*(_XMP_M_GET_ADDR_E_3(_XMP_ADDR_p, i + (1), (j + (1)) + (1), k - (1), _XMP_GTOL_acc_p_0, _XMP_GTOL_acc_p_1)))) + (*(_XMP_M_GET_ADDR_E_3(_XMP_ADDR_p, i + (1), (j + (1)) - (1), k - (1), _XMP_GTOL_acc_p_0, _XMP_GTOL_acc_p_1)))))) + ((*(_XMP_M_GET_ADDR_E_4(_XMP_ADDR_b, 2, i, j, k, _XMP_GTOL_acc_b_0, _XMP_GTOL_acc_b_1, _XMP_GTOL_acc_b_2))) * ((((*(_XMP_M_GET_ADDR_E_3(_XMP_ADDR_p, (i + (1)) + (1), j + (1), k + (1), _XMP_GTOL_acc_p_0, _XMP_GTOL_acc_p_1))) - (*(_XMP_M_GET_ADDR_E_3(_XMP_ADDR_p, (i + (1)) - (1), j + (1), k + (1), _XMP_GTOL_acc_p_0, _XMP_GTOL_acc_p_1)))) - (*(_XMP_M_GET_ADDR_E_3(_XMP_ADDR_p, (i + (1)) + (1), j + (1), k - (1), _XMP_GTOL_acc_p_0, _XMP_GTOL_acc_p_1)))) + (*(_XMP_M_GET_ADDR_E_3(_XMP_ADDR_p, (i + (1)) - (1), j + (1), k - (1), _XMP_GTOL_acc_p_0, _XMP_GTOL_acc_p_1)))))) + ((*(_XMP_M_GET_ADDR_E_4(_XMP_ADDR_c, 0, i, j, k, _XMP_GTOL_acc_c_0, _XMP_GTOL_acc_c_1, _XMP_GTOL_acc_c_2))) * (*(_XMP_M_GET_ADDR_E_3(_XMP_ADDR_p, (i + (1)) - (1), j + (1), k, _XMP_GTOL_acc_p_0, _XMP_GTOL_acc_p_1))))) + ((*(_XMP_M_GET_ADDR_E_4(_XMP_ADDR_c, 1, i, j, k, _XMP_GTOL_acc_c_0, _XMP_GTOL_acc_c_1, _XMP_GTOL_acc_c_2))) * (*(_XMP_M_GET_ADDR_E_3(_XMP_ADDR_p, i + (1), (j + (1)) - (1), k, _XMP_GTOL_acc_p_0, _XMP_GTOL_acc_p_1))))) + ((*(_XMP_M_GET_ADDR_E_4(_XMP_ADDR_c, 2, i, j, k, _XMP_GTOL_acc_c_0, _XMP_GTOL_acc_c_1, _XMP_GTOL_acc_c_2))) * (*(_XMP_M_GET_ADDR_E_3(_XMP_ADDR_p, i + (1), j + (1), k - (1), _XMP_GTOL_acc_p_0, _XMP_GTOL_acc_p_1))))) + (*(_XMP_M_GET_ADDR_E_3(_XMP_ADDR_wrk1, i, j, k, _XMP_GTOL_acc_wrk1_0, _XMP_GTOL_acc_wrk1_1))));
 # 274 "himeno.c"
 
   // a
-  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_4(_XMP_ADDR_a, 3, i, j, k, _XMP_GTOL_acc_a_0, _XMP_GTOL_acc_a_1, _XMP_GTOL_acc_a_2)) + 0x200, _MM_HINT_T1);
-  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_4(_XMP_ADDR_a, 3, i, j, k, _XMP_GTOL_acc_a_0, _XMP_GTOL_acc_a_1, _XMP_GTOL_acc_a_2)) + 0x80 , _MM_HINT_T0);
+  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_4(_XMP_ADDR_a, 3, i, j, k, _XMP_GTOL_acc_a_0, _XMP_GTOL_acc_a_1, _XMP_GTOL_acc_a_2)) + L2DIST, _MM_HINT_T1);
+  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_4(_XMP_ADDR_a, 3, i, j, k, _XMP_GTOL_acc_a_0, _XMP_GTOL_acc_a_1, _XMP_GTOL_acc_a_2)) + L1DIST , _MM_HINT_T0);
 
   // bnd
-  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_3(_XMP_ADDR_bnd, i, j, k, _XMP_GTOL_acc_bnd_0, _XMP_GTOL_acc_bnd_1)) + 0x200, _MM_HINT_T1);
-  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_3(_XMP_ADDR_bnd, i, j, k, _XMP_GTOL_acc_bnd_0, _XMP_GTOL_acc_bnd_1)) + 0x80 , _MM_HINT_T0);
+  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_3(_XMP_ADDR_bnd, i, j, k, _XMP_GTOL_acc_bnd_0, _XMP_GTOL_acc_bnd_1)) + L2DIST, _MM_HINT_T1);
+  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_3(_XMP_ADDR_bnd, i, j, k, _XMP_GTOL_acc_bnd_0, _XMP_GTOL_acc_bnd_1)) + L1DIST , _MM_HINT_T0);
 
 ss = (((s0 * (*(_XMP_M_GET_ADDR_E_4(_XMP_ADDR_a, 3, i, j, k, _XMP_GTOL_acc_a_0, _XMP_GTOL_acc_a_1, _XMP_GTOL_acc_a_2)))) - (*(_XMP_M_GET_ADDR_E_3(_XMP_ADDR_p, i + (1), j + (1), k, _XMP_GTOL_acc_p_0, _XMP_GTOL_acc_p_1)))) * (*(_XMP_M_GET_ADDR_E_3(_XMP_ADDR_bnd, i, j, k, _XMP_GTOL_acc_bnd_0, _XMP_GTOL_acc_bnd_1))));
 # 275 "himeno.c"
@@ -1802,8 +1805,8 @@ gosa += (ss * ss);
 # 277 "himeno.c"
 
   // wrk2
-  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_3(_XMP_ADDR_wrk2, i, j, k, _XMP_GTOL_acc_wrk2_0, _XMP_GTOL_acc_wrk2_1)) + 0x200, _MM_HINT_T1);
-  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_3(_XMP_ADDR_wrk2, i, j, k, _XMP_GTOL_acc_wrk2_0, _XMP_GTOL_acc_wrk2_1)) + 0x80 , _MM_HINT_T0);
+  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_3(_XMP_ADDR_wrk2, i, j, k, _XMP_GTOL_acc_wrk2_0, _XMP_GTOL_acc_wrk2_1)) + L2DIST, _MM_HINT_T1);
+  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_3(_XMP_ADDR_wrk2, i, j, k, _XMP_GTOL_acc_wrk2_0, _XMP_GTOL_acc_wrk2_1)) + L1DIST , _MM_HINT_T0);
 
 (*(_XMP_M_GET_ADDR_E_3(_XMP_ADDR_wrk2, i, j, k, _XMP_GTOL_acc_wrk2_0, _XMP_GTOL_acc_wrk2_1))) = ((*(_XMP_M_GET_ADDR_E_3(_XMP_ADDR_p, i + (1), j + (1), k, _XMP_GTOL_acc_p_0, _XMP_GTOL_acc_p_1))) + (omega * ss));
 }
@@ -1832,12 +1835,12 @@ for(k = _XMP_loop_init_k; k < _XMP_loop_cond_k; k += _XMP_loop_step_k) {
 # 284 "himeno.c"
 
   // p
-  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_3(_XMP_ADDR_p, (i    ) + 1, (j    ) + 1, k, _XMP_GTOL_acc_p_0, _XMP_GTOL_acc_p_1)) + 0x200, _MM_HINT_T1);
-  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_3(_XMP_ADDR_p, (i    ) + 1, (j    ) + 1, k, _XMP_GTOL_acc_p_0, _XMP_GTOL_acc_p_1)) + 0x80 , _MM_HINT_T0);
+  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_3(_XMP_ADDR_p, (i    ) + 1, (j    ) + 1, k, _XMP_GTOL_acc_p_0, _XMP_GTOL_acc_p_1)) + L2DIST, _MM_HINT_T1);
+  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_3(_XMP_ADDR_p, (i    ) + 1, (j    ) + 1, k, _XMP_GTOL_acc_p_0, _XMP_GTOL_acc_p_1)) + L1DIST , _MM_HINT_T0);
 
   // wrk2
-  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_3(_XMP_ADDR_wrk2, i, j, k, _XMP_GTOL_acc_wrk2_0, _XMP_GTOL_acc_wrk2_1)) + 0x200, _MM_HINT_T1);
-  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_3(_XMP_ADDR_wrk2, i, j, k, _XMP_GTOL_acc_wrk2_0, _XMP_GTOL_acc_wrk2_1)) + 0x80 , _MM_HINT_T0);
+  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_3(_XMP_ADDR_wrk2, i, j, k, _XMP_GTOL_acc_wrk2_0, _XMP_GTOL_acc_wrk2_1)) + L2DIST, _MM_HINT_T1);
+  _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_3(_XMP_ADDR_wrk2, i, j, k, _XMP_GTOL_acc_wrk2_0, _XMP_GTOL_acc_wrk2_1)) + L1DIST , _MM_HINT_T0);
 
 (*(_XMP_M_GET_ADDR_E_3(_XMP_ADDR_p, i + (1), j + (1), k, _XMP_GTOL_acc_p_0, _XMP_GTOL_acc_p_1))) = (*(_XMP_M_GET_ADDR_E_3(_XMP_ADDR_wrk2, i, j, k, _XMP_GTOL_acc_wrk2_0, _XMP_GTOL_acc_wrk2_1)));
 }
