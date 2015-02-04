@@ -24,5 +24,11 @@ himeno_ompx-S: himeno_ompx.c
 himeno_ompx-M: himeno_ompx.c
 	${CC} -o $@ himeno_ompx.c ${CFLAGS} -DMIDDLE
 
+run: deploy
+	sh run.sh ${ITER} ${MIC}
+
+deploy:
+	scp ${TARGETS} "${MIC}:~/tmp"
+
 clean:
 	rm ${TARGETS} *.o
