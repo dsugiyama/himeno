@@ -1841,7 +1841,7 @@ double flop;
 # 88 "himeno.c"
 double target;
 # 90 "himeno.c"
-target = (10.0);
+target = (20.0);
 # 91 "himeno.c"
 omega = (0.8);
 # 92 "himeno.c"
