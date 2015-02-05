@@ -1683,9 +1683,6 @@ for(j = _XMP_loop_init_j; j < _XMP_loop_cond_j; j += _XMP_loop_step_j) {
 for(k = _XMP_loop_init_k; k < _XMP_loop_cond_k; k += _XMP_loop_step_k) {
 # 261 "himeno.c"
 
-#define L1DIST 0x80
-#define L2DIST 0x200
-
   // a
   _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_4(_XMP_ADDR_a, 0, i, j, k, _XMP_GTOL_acc_a_0, _XMP_GTOL_acc_a_1, _XMP_GTOL_acc_a_2)) + L2DIST, _MM_HINT_T1);
   _mm_prefetch((const char *)(_XMP_M_GET_ADDR_E_4(_XMP_ADDR_a, 0, i, j, k, _XMP_GTOL_acc_a_0, _XMP_GTOL_acc_a_1, _XMP_GTOL_acc_a_2)) + L1DIST , _MM_HINT_T0);
