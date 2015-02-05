@@ -1730,6 +1730,7 @@ _XMP_sched_loop_template_DUPLICATION(1, kmax - (1), 1, &(_XMP_loop_init_k), &(_X
 _XMP_sched_loop_template_BLOCK(1, jmax - (1), 1, &(_XMP_loop_init_j), &(_XMP_loop_cond_j), &(_XMP_loop_step_j), _XMP_DESC_t, 1);
 _XMP_sched_loop_template_BLOCK(1, imax - (1), 1, &(_XMP_loop_init_i), &(_XMP_loop_cond_i), &(_XMP_loop_step_i), _XMP_DESC_t, 2);
 # 258 "himeno.c"
+#pragma ivdep
 for(i = _XMP_loop_init_i; i < _XMP_loop_cond_i; i += _XMP_loop_step_i) {
 # 259 "himeno.c"
 for(j = _XMP_loop_init_j; j < _XMP_loop_cond_j; j += _XMP_loop_step_j) {
@@ -1827,6 +1828,7 @@ _XMP_sched_loop_template_DUPLICATION(1, kmax - (1), 1, &(_XMP_loop_init_k), &(_X
 _XMP_sched_loop_template_BLOCK(1, jmax - (1), 1, &(_XMP_loop_init_j), &(_XMP_loop_cond_j), &(_XMP_loop_step_j), _XMP_DESC_t, 1);
 _XMP_sched_loop_template_BLOCK(1, imax - (1), 1, &(_XMP_loop_init_i), &(_XMP_loop_cond_i), &(_XMP_loop_step_i), _XMP_DESC_t, 2);
 # 281 "himeno.c"
+#pragma ivdep
 for(i = _XMP_loop_init_i; i < _XMP_loop_cond_i; i += _XMP_loop_step_i) {
 # 282 "himeno.c"
 for(j = _XMP_loop_init_j; j < _XMP_loop_cond_j; j += _XMP_loop_step_j) {
