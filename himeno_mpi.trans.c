@@ -1791,8 +1791,8 @@ for(k = _XMP_loop_init_k; k < _XMP_loop_cond_k; k += _XMP_loop_step_k) {
 }
 }
 }
-_XMP_reflect__(_XMP_DESC_p);
-_XMP_M_REDUCE_EXEC(&(gosa), 0x000000001ll, 513, 300);
+// _XMP_reflect__(_XMP_DESC_p);
+// _XMP_M_REDUCE_EXEC(&(gosa), 0x000000001ll, 513, 300);
 }
 # 290 "himeno.c"
 return gosa;
