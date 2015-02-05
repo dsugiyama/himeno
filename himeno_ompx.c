@@ -93,7 +93,7 @@ main()
   float  gosa;
   double cpu,cpu0,cpu1,flop,target;
 
-  target= 60.0;
+  target= 20.0;
   omega= 0.8;
   imax = MIMAX-1;
   jmax = MJMAX-1;
