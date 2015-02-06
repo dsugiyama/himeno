@@ -5,7 +5,7 @@ XMPFLAGS = -lxmp
 MPIFLAGS = -I${HOME}/omni-compiler/include -L${HOME}/omni-compiler/lib
 THREADSFLAGS = -lpthread -I${HOME}/omnixmp-threads/include -L${HOME}/omnixmp-threads/lib
 
-TARGETS = himeno_mpi-S himeno_mpi-M himeno_threads-S himeno_threads-M himeno_omp himeno_ompx-S himeno_ompx-M
+TARGETS = himeno_mpi-S himeno_mpi-M himeno_threads-S himeno_threads-M himeno_ompx-S himeno_ompx-M
 
 L1DIST = 0x40
 L2DIST = 0x100
@@ -24,15 +24,13 @@ himeno_threads-S: himeno_threads.trans.c
 himeno_threads-M: himeno_threads.trans.c
 	${MPI_CC} -o $@ himeno_threads.trans.c ${CFLAGS} ${XMPFLAGS} ${THREADSFLAGS} -DMIDDLE \
 	-DL1DIST=${L1DIST} -DL2DIST=${L2DIST}
-himeno_omp: himeno_omp.c
-	${CC} -o $@ himeno_omp.c ${CFLAGS}
 himeno_ompx-S: himeno_ompx.c
 	${CC} -o $@ himeno_ompx.c ${CFLAGS} -DSMALL
 himeno_ompx-M: himeno_ompx.c
 	${CC} -o $@ himeno_ompx.c ${CFLAGS} -DMIDDLE
 
 run: deploy
-	sh run.sh ${ITER} ${MIC}
+	sh run.sh ${NITER} ${MIC}
 
 deploy:
 	scp ${TARGETS} "${MIC}:~/tmp"
