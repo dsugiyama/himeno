@@ -4,8 +4,8 @@ omp_exe="himeno_omp"
 ompx_exes="himeno_ompx-S himeno_ompx-M"
 gsizes="S M"
 
-sizes="1x1 1x2 2x2 2x4 4x4 4x8 8x8 8x16 15x16"
-onedsizes="1 2 4 8 16 32 64 128 240"
+sizes="1x1 1x2 2x2 2x4 4x4 4x8 6x10 10x12 15x16"
+onedsizes="1 2 4 8 16 32 60 120 240"
 
 for e in $mpi_exes; do
     echo $e
