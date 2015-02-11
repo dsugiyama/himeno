@@ -1520,7 +1520,7 @@ int thread_main(int argc, char *argv[])
     int r;
     xmpc_init_thread_all(argc, argv, num_threads, thread_num);
     xmpc_module_init();
-    r = (xmpc_main(aa->argc, aa->argv));
+    r = (xmpc_main(argc, argv));
     xmpc_finalize_all(r);
     return r;
 }
