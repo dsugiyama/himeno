@@ -1919,6 +1919,7 @@ _XMP_exec_task_NODES_FINALIZE(_XMP_TASK_desc);
 }
 # 147 "himeno.c"
 nn = ((int)(target / (cpu / (3.0))));
+nn = nn == 0 ? 3 : nn;
 {
 void * _XMP_TASK_desc = (void * )(0);
 if(_XMP_exec_task_TEMPLATE_PART(&(_XMP_TASK_desc), _XMP_DESC_t, (int)(0), (long long)(0), (long long)(0), (long long)(1), (int)(0), (long long)(0), (long long)(0), (long long)(1), (int)(0), (long long)(0), (long long)(0), (long long)(1))) {
