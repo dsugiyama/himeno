@@ -7,7 +7,7 @@ THREADSFLAGS = -lpthread -I${HOME}/omnixmp-threads/include -L${HOME}/omnixmp-thr
 
 TARGETS = himeno_mpi-S himeno_mpi-M himeno_mpi-L \
           himeno_threads-S himeno_threads-M himeno_threads-L \
-          himeno_ompx-S himeno_ompx-M himeno_ompx-S
+          himeno_ompx-S himeno_ompx-M himeno_ompx-L
 
 L1DIST = 0x40
 L2DIST = 0x100
