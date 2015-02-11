@@ -121,6 +121,7 @@ main()
          mflops(nn,cpu,flop),cpu,gosa);
 
   nn= (int)(target/(cpu/3.0));
+  nn = nn == 0 ? 3 : nn;
 
   printf(" Now, start the actual measurement process.\n");
   printf(" The loop will be excuted in %d times\n",nn);
