@@ -203,6 +203,7 @@ jacobi(int nn)
 
       #pragma omp for reduction(+:gosa)
       for(i=1 ; i<imax-1 ; i++)
+        #pragma omp parallel
         #pragma omp for reduction(+:gosa)
         for(j=1 ; j<jmax-1 ; j++)
           for(k=1 ; k<kmax-1 ; k++){
@@ -228,8 +229,10 @@ jacobi(int nn)
             wrk2[i][j][k] = p[i][j][k] + omega * ss;
           }
 
-      #pragma omp for collapse(2)
+      #pragma omp for
       for(i=1 ; i<imax-1 ; ++i)
+        #pragma omp parallel
+        #pragma omp for
         for(j=1 ; j<jmax-1 ; ++j)
           for(k=1 ; k<kmax-1 ; ++k)
             p[i][j][k] = wrk2[i][j][k];
