@@ -24,7 +24,7 @@ exec_omp() {
     echo $1
     for s in $sizes1d; do
         python aggregate.py $niter $mic -- \
-        KMP_AFFINITY=balanced OMP_NUM_THREADS=$s ./$1
+        KMP_AFFINITY=balanced OMP_THREAD_LIMIT=$s OMPC_NUM_PROCS=$s OMP_NESTED=true ./$1
     done
     echo
 }

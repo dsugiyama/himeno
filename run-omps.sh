@@ -10,7 +10,7 @@ exec_abt() {
     echo $1
     for s in $sizes1d; do
         python aggregate.py $niter $mic -- \
-        OMP_NUM_THREADS=$s OMPC_NUM_FORK=$nfork ./$1
+        OMPC_NUM_PROCS=$s OMPC_NUM_FORK=$nfork ./$1
     done
     echo
 }
