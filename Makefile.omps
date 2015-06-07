@@ -1,0 +1,24 @@
+CFLAGS = -mmic -O3 -ipo -std=gnu99
+
+TARGETS = himeno_intel_collapse-M himeno_intel-M himeno_omni-M himeno_abt-M
+
+all: ${TARGETS}
+
+himeno_intel_collapse-M: himeno_ompx.c
+	icc -openmp ${CFLAGS} -o $@ himeno_ompx.c -DMIDDLE
+
+himeno_intel-M: himeno_omp_nested.c
+	icc -openmp ${CFLAGS} -o $@ himeno_omp_nested.c -DMIDDLE
+
+himeno_omni-M: himeno_omp_nested.c
+	ompcc ${CFLAGS} -o $@ himeno_omp_nested.c -DMIDDLE
+
+himeno_abt-M: himeno_omp_nested.c
+	${HOME}/inst/omni-compiler_argobots/bin/ompcc ${CFLAGS} -o $@ himeno_omp_nested.c \
+	    -Wl,-dn,-labt,-dy -L${HOME}/inst/argobots/lib -DMIDDLE
+
+run: deploy
+	sh run-omps.sh ${NITER} ${MIC} ${NFORK}
+
+deploy:
+	scp ${TARGETS} "${MIC}:~/tmp"
