@@ -151,7 +151,8 @@ initmt()
 {
 	int i,j,k;
 
-  #pragma omp parallel for private(i, j, k)
+  #pragma omp parallel private(i, j, k)
+  #pragma omp for
   for(i=0 ; i<MIMAX ; i++)
     for(j=0 ; j<MJMAX ; j++)
       for(k=0 ; k<MKMAX ; k++){
@@ -170,7 +171,8 @@ initmt()
         bnd[i][j][k]=0.0;
       }
 
-  #pragma omp parallel for private(i, j, k)
+  #pragma omp parallel private(i, j, k)
+  #pragma omp for
   for(i=0 ; i<imax ; i++)
     for(j=0 ; j<jmax ; j++)
       for(k=0 ; k<kmax ; k++){
