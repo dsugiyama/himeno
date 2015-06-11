@@ -1,4 +1,4 @@
-CFLAGS = -mmic -O3 -ipo -std=gnu99
+CFLAGS = -mmic -O3 -ipo -fno-alias -std=gnu99
 
 TARGETS = himeno_intel_collapse-M himeno_intel-M himeno_omni-M himeno_abt-M
 
