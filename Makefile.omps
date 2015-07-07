@@ -15,7 +15,7 @@ himeno_omni-M: himeno_omp_nested.c
 
 himeno_abt-M: himeno_omp_nested.c
 	${HOME}/inst/omni-compiler_argobots/bin/ompcc ${CFLAGS} -o $@ himeno_omp_nested.c \
-	    -Wl,-dn,-labt,-dy -L${HOME}/inst/argobots/lib -DMIDDLE
+	    -labt -L${HOME}/inst/argobots/lib -DMIDDLE
 
 run: deploy
 	sh run-omps.sh ${NITER} ${MIC} ${NFORK}
