@@ -573,6 +573,7 @@ extern int futimes(int __fd, struct timeval const __tvp[2]);
 
 #include "param.h"
 #include <immintrin.h>
+#include <omp.h>
 
 # 674 "/opt/intel//impi/5.0.1.035/mic/include/mpi.h"
 extern struct MPIR_T_pvar_handle_s * const MPI_T_PVAR_ALL_HANDLES;
@@ -1510,61 +1511,30 @@ void _XMP_reduce_threads_fast(void *addr, int count, int datatype, int op);
 
 int atoi(const char *);
 char *getenv(const char *);
-void *malloc(size_t);
-void free(void *);
 
-typedef unsigned long pthread_t;
-struct pthread_attr_type; typedef struct pthread_attr_type pthread_attr_t;
-int pthread_create(pthread_t *, pthread_attr_t *, void *(void *), void *);
-int pthread_join(pthread_t, void **);
-
-struct args
+int thread_main(int argc, char *argv[])
 {
-    int argc;
-    char **argv;
-    int num_threads;
-    int thread_num;
-};
-
-void *thread_main(void *a)
-{
-    struct args *aa = (struct args *)a;
+    int num_threads = omp_get_num_threads();
+    int thread_num = omp_get_thread_num();
 
     int r;
-    xmpc_init_thread_all(aa->argc, aa->argv, aa->num_threads, aa->thread_num);
+    xmpc_init_thread_all(argc, argv, num_threads, thread_num);
     xmpc_module_init();
-    r = (xmpc_main(aa->argc, aa->argv));
+    r = (xmpc_main(argc, argv));
     xmpc_finalize_all(r);
-    return (void *)r;
+    return r;
 }
 
 int main(int argc, char *argv[])
 {
     int nth = atoi(getenv("XMP_NODE_SIZE0")) * atoi(getenv("XMP_NODE_SIZE1"));
-    pthread_t *threads = malloc((nth - 1) * sizeof(pthread_t));
-    struct args *a = malloc(nth * sizeof(struct args));
 
-    for (int i = 0; i < nth; i++) {
-        a[i].argc = argc;
-        a[i].argv = argv;
-        a[i].num_threads = nth;
-        a[i].thread_num = i;
-
-        if (i != 0) {
-            pthread_create(&(threads[i - 1]), NULL, thread_main, &(a[i]));
-        }
+    #pragma omp parallel num_threads(nth)
+    {
+        thread_main(argc, argv);
     }
 
-    int r = (int)thread_main(&(a[0]));
-
-    for (int i = 1; i < nth; i++) {
-        pthread_join(threads[i - 1], NULL);
-    }
-
-    free(threads);
-    free(a);
-
-    return r;
+    return 0;
 }
 
 double fflop(int mx, int my, int mz)
