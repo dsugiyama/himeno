@@ -38,6 +38,7 @@
 
 #include <stdio.h>
 #include <omp.h>
+#include <tlog.h>
 
 #ifdef SSMALL
 #define MIMAX            33
@@ -93,6 +94,8 @@ main()
   float  gosa;
   double cpu,cpu0,cpu1,flop,target;
 
+  tlog_initialize();
+
   target= 20.0;
   omega= 0.8;
   imax = MIMAX-1;
@@ -142,6 +145,8 @@ main()
   printf(" MFLOPS measured : %f\tcpu : %f\n",mflops(nn,cpu,flop),cpu);
   printf(" Score based on Pentium III 600MHz : %f\n",
          mflops(nn,cpu,flop)/82,84);
+
+  tlog_finalize();
   
   return (0);
 }
@@ -200,11 +205,15 @@ jacobi(int nn)
 
   #pragma omp parallel private(i, j, k, n, s0, ss)
   {
+    int tnum = omp_get_thread_num();
+
     for(n=0 ; n<nn ; ++n){
       gosa = 0.0;
 
       #pragma omp for reduction(+:gosa)
       for(i=1 ; i<imax-1 ; i++) {
+        if (n == 0) { tlog_log2(TLOG_EVENT_1_IN, tnum); }
+
         #pragma omp parallel
         {
           #pragma omp for reduction(+:gosa)
@@ -233,10 +242,14 @@ jacobi(int nn)
             }
           }
         }
+
+        if (n == 0) { tlog_log2(TLOG_EVENT_1_OUT, tnum); }
       }
 
       #pragma omp for
       for(i=1 ; i<imax-1 ; ++i) {
+        if (n == 0) { tlog_log2(TLOG_EVENT_2_IN, tnum); }
+
         #pragma omp parallel
         {
           #pragma omp for
@@ -246,6 +259,8 @@ jacobi(int nn)
             }
           }
         }
+
+        if (n == 0) { tlog_log2(TLOG_EVENT_2_OUT, tnum); }
       }
       
     } /* end n loop */
