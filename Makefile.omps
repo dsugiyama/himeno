@@ -1,4 +1,9 @@
-CFLAGS = -mmic -O3 -ipo -fno-alias -std=gnu99
+ifeq (${DEBUG}, true)
+    DEBUG_FLAG = -g3
+    DEBUG_SUFFIX = _debug
+endif
+
+CFLAGS = -mmic -O3 -ipo -fno-alias -std=gnu99 ${DEBUG_FLAG}
 
 TARGETS = himeno_intel_collapse-M himeno_intel-M himeno_omni-M himeno_abt-M
 
@@ -11,11 +16,11 @@ himeno_intel-M: himeno_omp_nested.c
 	icc -openmp ${CFLAGS} -o $@ himeno_omp_nested.c -DMIDDLE
 
 himeno_omni-M: himeno_omp_nested.c
-	ompcc ${CFLAGS} -o $@ himeno_omp_nested.c -DMIDDLE
+	${HOME}/inst/omni-compiler${DEBUG_SUFFIX}/ompcc ${CFLAGS} -o $@ himeno_omp_nested.c -DMIDDLE
 
 himeno_abt-M: himeno_omp_nested.c
-	${HOME}/inst/omni-compiler_argobots/bin/ompcc ${CFLAGS} -o $@ himeno_omp_nested.c \
-	    -labt -L${HOME}/inst/argobots/lib -DMIDDLE
+	${HOME}/inst/omni-compiler_argobots${DEBUG_SUFFIX}/bin/ompcc ${CFLAGS} -o $@ himeno_omp_nested.c \
+	    -labt -L${HOME}/inst/argobots${DEBUG_SIFFIX}/lib -DMIDDLE
 
 run: deploy
 	sh run-omps.sh ${NITER} ${MIC} ${NFORK}
