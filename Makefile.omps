@@ -1,9 +1,11 @@
 ifeq (${DEBUG}, true)
-    DEBUG_FLAG = -g3
+    DEBUG_OPTION = -g3
     DEBUG_SUFFIX = _debug
+else
+    OPTIMIZE_OPTIONS = -O3 -ipo
 endif
 
-CFLAGS = -mmic -O3 -ipo -fno-alias -std=gnu99 ${DEBUG_FLAG}
+CFLAGS = -mmic ${OPTIMIZE_OPTIONS} -fno-alias -std=gnu99 ${DEBUG_OPTION}
 
 TARGETS = himeno_intel_collapse-M himeno_intel-M himeno_omni-M himeno_abt-M
 
