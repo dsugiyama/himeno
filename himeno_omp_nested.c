@@ -94,7 +94,7 @@ main()
   float  gosa;
   double cpu,cpu0,cpu1,flop,target;
 
-  tlog_initialize();
+  tlog_initialize(32);
 
   target= 20.0;
   omega= 0.8;
