@@ -216,6 +216,12 @@ jacobi(int nn)
 
         #pragma omp parallel
         {
+          #pragma omp single
+          {
+            if (n == 0) { tlog_log2(TLOG_EVENT_1_OUT, tnum); }
+            if (n == 0) { tlog_log2(TLOG_EVENT_2_IN, tnum); }
+          }
+
           #pragma omp for reduction(+:gosa)
           for(j=1 ; j<jmax-1 ; j++) {
             for(k=1 ; k<kmax-1 ; k++){
@@ -241,26 +247,44 @@ jacobi(int nn)
               wrk2[i][j][k] = p[i][j][k] + omega * ss;
             }
           }
+
+          #pragma omp single
+          {
+            if (n == 0) { tlog_log2(TLOG_EVENT_2_OUT, tnum); }
+            if (n == 0) { tlog_log2(TLOG_EVENT_3_IN, tnum); }
+          }
         }
 
-        if (n == 0) { tlog_log2(TLOG_EVENT_1_OUT, tnum); }
+        if (n == 0) { tlog_log2(TLOG_EVENT_3_OUT, tnum); }
       }
 
       #pragma omp for
       for(i=1 ; i<imax-1 ; ++i) {
-        if (n == 0) { tlog_log2(TLOG_EVENT_2_IN, tnum); }
+        if (n == 0) { tlog_log2(TLOG_EVENT_1_IN, tnum); }
 
         #pragma omp parallel
         {
+          #pragma omp single
+          {
+            if (n == 0) { tlog_log2(TLOG_EVENT_1_OUT, tnum); }
+            if (n == 0) { tlog_log2(TLOG_EVENT_4_IN, tnum); }
+          }
+
           #pragma omp for
           for(j=1 ; j<jmax-1 ; ++j) {
             for(k=1 ; k<kmax-1 ; ++k) {
               p[i][j][k] = wrk2[i][j][k];
             }
           }
+
+          #pragma omp single
+          {
+            if (n == 0) { tlog_log2(TLOG_EVENT_4_OUT, tnum); }
+            if (n == 0) { tlog_log2(TLOG_EVENT_3_IN, tnum); }
+          }
         }
 
-        if (n == 0) { tlog_log2(TLOG_EVENT_2_OUT, tnum); }
+        if (n == 0) { tlog_log2(TLOG_EVENT_3_OUT, tnum); }
       }
       
     } /* end n loop */
