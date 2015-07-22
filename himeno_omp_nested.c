@@ -216,7 +216,7 @@ jacobi(int nn)
 
         #pragma omp parallel
         {
-          #pragma omp single
+          #pragma omp master
           {
             if (n == 0) { tlog_log2(TLOG_EVENT_1_OUT, tnum); }
             if (n == 0) { tlog_log2(TLOG_EVENT_2_IN, tnum); }
@@ -248,7 +248,7 @@ jacobi(int nn)
             }
           }
 
-          #pragma omp single
+          #pragma omp master
           {
             if (n == 0) { tlog_log2(TLOG_EVENT_2_OUT, tnum); }
             if (n == 0) { tlog_log2(TLOG_EVENT_3_IN, tnum); }
@@ -264,7 +264,7 @@ jacobi(int nn)
 
         #pragma omp parallel
         {
-          #pragma omp single
+          #pragma omp master
           {
             if (n == 0) { tlog_log2(TLOG_EVENT_1_OUT, tnum); }
             if (n == 0) { tlog_log2(TLOG_EVENT_4_IN, tnum); }
@@ -277,7 +277,7 @@ jacobi(int nn)
             }
           }
 
-          #pragma omp single
+          #pragma omp master
           {
             if (n == 0) { tlog_log2(TLOG_EVENT_4_OUT, tnum); }
             if (n == 0) { tlog_log2(TLOG_EVENT_3_IN, tnum); }
