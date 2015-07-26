@@ -94,7 +94,7 @@ main()
   float  gosa;
   double cpu,cpu0,cpu1,flop,target;
 
-  tlog_initialize(32);
+  tlog_initialize(240);
 
   target= 20.0;
   omega= 0.8;
@@ -205,22 +205,23 @@ jacobi(int nn)
 
   #pragma omp parallel private(i, j, k, n, s0, ss)
   {
-    int tnum = omp_get_thread_num();
+    int tnum1 = omp_get_thread_num();
 
     for(n=0 ; n<nn ; ++n){
       gosa = 0.0;
 
       #pragma omp for reduction(+:gosa)
       for(i=1 ; i<imax-1 ; i++) {
-        if (n == 0) { tlog_log2(TLOG_EVENT_1_IN, tnum); }
+        if (n == 2) { tlog_log2(TLOG_EVENT_1_IN, tnum1 * 12); }
 
         #pragma omp parallel
         {
           #pragma omp master
-          {
-            if (n == 0) { tlog_log2(TLOG_EVENT_1_OUT, tnum); }
-            if (n == 0) { tlog_log2(TLOG_EVENT_2_IN, tnum); }
-          }
+          if (n == 2) { tlog_log2(TLOG_EVENT_1_OUT, tnum1 * 12); }
+
+          int tnum2 = omp_get_thread_num();
+
+          if (n == 2) { tlog_log2(TLOG_EVENT_2_IN, tnum1 * 12 + tnum2); }
 
           #pragma omp for reduction(+:gosa)
           for(j=1 ; j<jmax-1 ; j++) {
@@ -248,27 +249,27 @@ jacobi(int nn)
             }
           }
 
+          if (n == 2) { tlog_log2(TLOG_EVENT_2_OUT, tnum1 * 12 + tnum2); }
+
           #pragma omp master
-          {
-            if (n == 0) { tlog_log2(TLOG_EVENT_2_OUT, tnum); }
-            if (n == 0) { tlog_log2(TLOG_EVENT_3_IN, tnum); }
-          }
+          if (n == 2) { tlog_log2(TLOG_EVENT_3_IN, tnum1 * 12); }
         }
 
-        if (n == 0) { tlog_log2(TLOG_EVENT_3_OUT, tnum); }
+        if (n == 2) { tlog_log2(TLOG_EVENT_3_OUT, tnum1 * 12); }
       }
 
       #pragma omp for
       for(i=1 ; i<imax-1 ; ++i) {
-        if (n == 0) { tlog_log2(TLOG_EVENT_1_IN, tnum); }
+        if (n == 2) { tlog_log2(TLOG_EVENT_1_IN, tnum1 * 12); }
 
         #pragma omp parallel
         {
           #pragma omp master
-          {
-            if (n == 0) { tlog_log2(TLOG_EVENT_1_OUT, tnum); }
-            if (n == 0) { tlog_log2(TLOG_EVENT_4_IN, tnum); }
-          }
+          if (n == 2) { tlog_log2(TLOG_EVENT_1_OUT, tnum1 * 12); }
+
+          int tnum2 = omp_get_thread_num();
+
+          if (n == 2) { tlog_log2(TLOG_EVENT_4_IN, tnum1 * 12 + tnum2); }
 
           #pragma omp for
           for(j=1 ; j<jmax-1 ; ++j) {
@@ -277,14 +278,13 @@ jacobi(int nn)
             }
           }
 
+          if (n == 2) { tlog_log2(TLOG_EVENT_4_OUT, tnum1 * 12 + tnum2); }
+
           #pragma omp master
-          {
-            if (n == 0) { tlog_log2(TLOG_EVENT_4_OUT, tnum); }
-            if (n == 0) { tlog_log2(TLOG_EVENT_3_IN, tnum); }
-          }
+          if (n == 2) { tlog_log2(TLOG_EVENT_3_IN, tnum1 * 12); }
         }
 
-        if (n == 0) { tlog_log2(TLOG_EVENT_3_OUT, tnum); }
+        if (n == 2) { tlog_log2(TLOG_EVENT_3_OUT, tnum1 * 12); }
       }
       
     } /* end n loop */
