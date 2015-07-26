@@ -212,14 +212,14 @@ jacobi(int nn)
 
       #pragma omp for reduction(+:gosa)
       for(i=1 ; i<imax-1 ; i++) {
-        if (n == 0) { tlog_log2(TLOG_EVENT_1_IN, tnum); }
+        if (n == 2) { tlog_log2(TLOG_EVENT_1_IN, tnum); }
 
         #pragma omp parallel
         {
           #pragma omp master
           {
-            if (n == 0) { tlog_log2(TLOG_EVENT_1_OUT, tnum); }
-            if (n == 0) { tlog_log2(TLOG_EVENT_2_IN, tnum); }
+            if (n == 2) { tlog_log2(TLOG_EVENT_1_OUT, tnum); }
+            if (n == 2) { tlog_log2(TLOG_EVENT_2_IN, tnum); }
           }
 
           #pragma omp for reduction(+:gosa)
@@ -250,24 +250,24 @@ jacobi(int nn)
 
           #pragma omp master
           {
-            if (n == 0) { tlog_log2(TLOG_EVENT_2_OUT, tnum); }
-            if (n == 0) { tlog_log2(TLOG_EVENT_3_IN, tnum); }
+            if (n == 2) { tlog_log2(TLOG_EVENT_2_OUT, tnum); }
+            if (n == 2) { tlog_log2(TLOG_EVENT_3_IN, tnum); }
           }
         }
 
-        if (n == 0) { tlog_log2(TLOG_EVENT_3_OUT, tnum); }
+        if (n == 2) { tlog_log2(TLOG_EVENT_3_OUT, tnum); }
       }
 
       #pragma omp for
       for(i=1 ; i<imax-1 ; ++i) {
-        if (n == 0) { tlog_log2(TLOG_EVENT_1_IN, tnum); }
+        if (n == 2) { tlog_log2(TLOG_EVENT_1_IN, tnum); }
 
         #pragma omp parallel
         {
           #pragma omp master
           {
-            if (n == 0) { tlog_log2(TLOG_EVENT_1_OUT, tnum); }
-            if (n == 0) { tlog_log2(TLOG_EVENT_4_IN, tnum); }
+            if (n == 2) { tlog_log2(TLOG_EVENT_1_OUT, tnum); }
+            if (n == 2) { tlog_log2(TLOG_EVENT_4_IN, tnum); }
           }
 
           #pragma omp for
@@ -279,12 +279,12 @@ jacobi(int nn)
 
           #pragma omp master
           {
-            if (n == 0) { tlog_log2(TLOG_EVENT_4_OUT, tnum); }
-            if (n == 0) { tlog_log2(TLOG_EVENT_3_IN, tnum); }
+            if (n == 2) { tlog_log2(TLOG_EVENT_4_OUT, tnum); }
+            if (n == 2) { tlog_log2(TLOG_EVENT_3_IN, tnum); }
           }
         }
 
-        if (n == 0) { tlog_log2(TLOG_EVENT_3_OUT, tnum); }
+        if (n == 2) { tlog_log2(TLOG_EVENT_3_OUT, tnum); }
       }
       
     } /* end n loop */
