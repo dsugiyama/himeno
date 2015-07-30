@@ -18,7 +18,7 @@ himeno_intel-M: himeno_omp_nested.c
 	icc -openmp ${CFLAGS} -o $@ himeno_omp_nested.c -DMIDDLE
 
 himeno_omni-M: himeno_omp_nested.c
-	${HOME}/inst/omni-compiler${DEBUG_SUFFIX}/ompcc ${CFLAGS} -o $@ himeno_omp_nested.c -DMIDDLE
+	${HOME}/inst/omni-compiler${DEBUG_SUFFIX}/bin/ompcc ${CFLAGS} -o $@ himeno_omp_nested.c -DMIDDLE
 
 himeno_abt-M: himeno_omp_nested.c
 	${HOME}/inst/omni-compiler_argobots${DEBUG_SUFFIX}/bin/ompcc ${CFLAGS} -o $@ himeno_omp_nested.c -DMIDDLE
