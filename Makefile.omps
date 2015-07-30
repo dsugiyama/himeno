@@ -7,12 +7,9 @@ endif
 
 CFLAGS = -mmic ${OPTIMIZE_OPTIONS} -fno-alias -std=gnu99 ${DEBUG_OPTION}
 
-TARGETS = himeno_intel_collapse-M himeno_intel-M himeno_omni-M himeno_abt-M
+TARGETS = himeno_intel-M himeno_omni-M himeno_abt-M
 
 all: ${TARGETS}
-
-himeno_intel_collapse-M: himeno_ompx.c
-	icc -openmp ${CFLAGS} -o $@ himeno_ompx.c -DMIDDLE
 
 himeno_intel-M: himeno_omp_nested.c
 	icc -openmp ${CFLAGS} -o $@ himeno_omp_nested.c -DMIDDLE

@@ -10,12 +10,11 @@ exec_abt() {
     echo $1
     for s in $sizes1d; do
         python aggregate.py $niter $mic -- \
-        OMPC_NUM_PROCS=$s OMPC_NUM_FORK=$nfork ./$1
+        OMPC_NUM_PROCS=$s OMPC_NUM_FORK=$s ./$1
     done
     echo
 }
 
-exec_omp himeno_intel_collapse-M
 exec_omp himeno_intel-M
 exec_omp himeno_omni-M
 exec_abt himeno_abt-M
