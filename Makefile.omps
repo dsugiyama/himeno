@@ -1,6 +1,6 @@
 ifeq (${DEBUG}, true)
     CONFIG = dbg
-    DEBUG_OPTION = -g3
+    DEBUG_OPTION = -g3 -O0
 else
     CONFIG = opt
     OPTIMIZE_OPTIONS = -O3 -ipo
